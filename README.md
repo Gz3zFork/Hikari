@@ -55,6 +55,13 @@ git clone -b release_70 https://github.com/HikariObfuscator/Hikari.git Hikari &&
 ## Building issues
 - ```CMake Error at tools/xcode-toolchain/CMakeLists.txt:80 (message): Could not identify toolchain dir```
  Make sure you have Xcode installed and ``xcode-select -p`` points to ``/Applications/Xcode.app/Contents/Developer`` instead of the standalone macOS Toolchain
+ 
+## Other Apple Compatibility Issues
+Apple's Xcode uses a modified LLVM 6.0(~) to speed up build time and stuff. The core component of that modification is something called libTAPI, which Apple has stated they plan to backport libTAPI back to the open-source LLVM, so far directly using LLVM upstream in Xcode has some compatibility issues.
+
+- ``-index-store-path`` ``cannot specify -o when generating multiple output files`` These two issues can be solved by turning off ``Enable Index While Building`` **ACROSS THE WHOLE PROJECT, INCLUDING SUB-PROJECTS**
+
+It's probably less troublesome to port Hikari back to Apple's (SwiftLLVM)[https://github.com/apple/swift], which you can find a simple tutorial on my (blog)[https://mayuyu.io/2018/02/13/Porting-Hikari-to-Swift-Clang/], that being said setting the source up for the port is not for the faint hearted and each compilation takes more than three hours.
 
 # Building on Unix
 Most parts are the same, you just remove all the commands related to Xcode
