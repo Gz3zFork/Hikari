@@ -57,7 +57,7 @@ git clone -b release_70 https://github.com/HikariObfuscator/Hikari.git Hikari &&
  Make sure you have Xcode installed and ``xcode-select -p`` points to ``/Applications/Xcode.app/Contents/Developer`` instead of the standalone macOS Toolchain
  
 ## Other Apple Compatibility Issues
-Apple's Xcode uses a modified LLVM 6.0(~) to speed up build time and stuff. The core component of that modification is something called libTAPI, which Apple has stated they do plan to backport libTAPI back to the open-source LLVM, so far directly using LLVM upstream in Xcode still has some compatibility issues.
+Apple's Xcode uses a modified LLVM 6.0(~) to speed up build time and stuff. While Apple has stated they do plan to backport their changes back to the open-source LLVM, so far directly using LLVM upstream in Xcode still has some compatibility issues.
 
 - ``-index-store-path`` ``cannot specify -o when generating multiple output files`` These two issues can be solved by turning off ``Enable Index While Building`` **ACROSS THE WHOLE PROJECT, INCLUDING SUB-PROJECTS** Note that for whatever reason that I have no interest in figuring out, newer Xcode versions seems to be ignoring this setting and still pass that option back nevertheless. This is a **known bug** and I honestly don't have the mood or the interest to even attempt to fix it.
 
