@@ -63,6 +63,8 @@ Apple's Xcode uses a modified LLVM 6.0(~) to speed up build time and stuff. Whil
 
 It's probably less troublesome to port Hikari back to Apple's [SwiftLLVM](https://github.com/apple/swift), which you can find a simple tutorial on my [blog](https://mayuyu.io/2018/02/13/Porting-Hikari-to-Swift-Clang/), that being said setting the source up for the port is not for the faint hearted and each compilation takes more than three hours.
 
+Or alternatively, you could try using [HikariObfuscator/NatsukoiHanabi](https://github.com/HikariObfuscator/NatsukoiHanabi) which injects the obfuscation code into Apple Clang, this is the least stable implementation but it at least works straight out of the box
+
 # Building on Unix
 Most parts are the same, you just remove all the commands related to Xcode
 
